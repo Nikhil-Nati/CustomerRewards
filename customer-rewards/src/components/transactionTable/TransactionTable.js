@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { calculatePoints } from "../../utils/calculateRewards";
-import "../../styles/TableCSS.css"
+import {
+  Heading,
+  Pagination,
+  Button,
+  StyledTable
+} from "../../styles/TableCSS";
 
 const TransactionTable = ({ transactions, customerId }) => {
   const filtered = transactions.filter((txn) => txn.customerId === customerId);
@@ -19,9 +24,9 @@ const TransactionTable = ({ transactions, customerId }) => {
 
   return (
     <div>
-      <h3>Transactions</h3>
-      <table >
-        <thead className="txn-table">
+      <Heading>Transactions</Heading>
+      <StyledTable>
+        <thead>
           <tr>
             <th>Transaction</th>
             <th>Date</th>
@@ -39,13 +44,19 @@ const TransactionTable = ({ transactions, customerId }) => {
             </tr>
           ))}
         </tbody>
-      </table>
-      <div className="pagination">
+      </StyledTable>
+      <Pagination>
         Page:
         {[...Array(totalPages).keys()].map((i) => (
-          <button className="page-button" key={i} onClick={() => setPage(i + 1)}>{i + 1}</button>
+          <Button
+            key={i}
+            onClick={() => setPage(i + 1)}
+            disabled={page === i + 1}
+          >
+            {i + 1}
+          </Button>
         ))}
-      </div>
+      </Pagination>
     </div>
   );
 };
