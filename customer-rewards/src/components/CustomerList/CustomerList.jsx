@@ -1,23 +1,30 @@
-import React from "react";
+import "../../styles/CustomerList.css"
 
 const CustomerList = ({ transactions, onCustomerSelect }) => {
   const customerSet = new Set(transactions.map((t) => t.customerId));
+  const customerIds = [...customerSet];
+
+  const handleChange = (event) => {
+    const selectedCustomerId = event.target.value;
+    onCustomerSelect(selectedCustomerId);
+  };
 
   return (
-    <div>
+    <div className="customer-list" >
       <h2>Select a Customer</h2>
-      <ul>
-        {[...customerSet].map((customerId) => (
-          <li key={customerId}>
-            <button className="customer-select-button" 
-            onClick={() => onCustomerSelect(customerId)}>
-              Customer {customerId}
-            </button>
-          </li>
+      <select onChange={handleChange} defaultValue="">
+        <option value="" disabled>
+          -- Choose a Customer --
+        </option>
+        {customerIds.map((customerId) => (
+          <option key={customerId} value={customerId}>
+            Customer {customerId}
+          </option>
         ))}
-      </ul>
+      </select>
     </div>
   );
 };
+
 
 export default CustomerList;

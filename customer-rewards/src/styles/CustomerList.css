@@ -1,0 +1,30 @@
+div{
+    margin:1rem;
+}
+.customer-list {
+  margin: 1.5rem 0;
+  font-family: Arial, sans-serif;
+}
+
+.customer-list h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.customer-list select {
+  width: 250px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border 0.2s ease-in-out;
+}
+
+.customer-list select:focus {
+  border-color: #007bff;
+  outline: none;
+}
